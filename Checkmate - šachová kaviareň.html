@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Šachová kaviareň - miesto pre milovníkov šachu a dobrej kávy">
+    <meta name="keywords" content="šach, kaviareň, Bratislava, šachové turnaje">
+    <meta name="author" content="Šachová Kaviareň">
+    <title>Šachová Kaviareň</title>
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Šachová Kaviareň - Káva a Šach v Humennom">
+    <meta property="og:description" content="Navštívte našu šachovú kaviareň a vychutnajte si kvalitnú kávu a široký výber stolných hier.">
+    <meta property="og:image" content="Pictures/logo.png"> 
+    <meta property="og:url" content="https://www.yourwebsite.com"> <!-- Replace with your website URL -->
+    <meta property="og:type" content="website">
+
+    <!-- SEO Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="description" content="Navštívte našu šachovú kaviareň v Humennom, kde si môžete vychutnať kvalitnú kávu a zahrať si šach alebo stolné hry.">
+    <meta name="keywords" content="šachová kaviareň, káva, stolné hry, stolové hry, Humenné, šach, kaviareň">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --accent-color: #c8a456;
+            --text-color: #333;
+            --light-gray: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            color: var(--text-color);
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        /* Ensure header and nav are within the viewport */
+        header {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+            background-color: transparent !important;
+            transition: background-color 0.3s ease;
+            padding: 1.5rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .navbar.scrolled {
+            background-color: var(--primary-color) !important;
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: white !important;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 15px !important;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('Pictures/chess-cafe.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 80px 1rem;
+        }
+
+        .hero-content {
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .hero-logo {
+            width: 200px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        .btn-custom {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #b18d3d;
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 8rem 0;
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .menu-section {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .menu-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-item h3 {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-section {
+            padding: 5rem 0;
+            background-color: var(--light-gray);
+        }
+
+        .contact-info-card, .hours-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 100%;
+        }
+
+        .contact-info-card h3, .hours-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .contact-info-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .company-info p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .hour-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .hour-item:last-child {
+            border-bottom: none;
+        }
+
+        .hours-note {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            font-style: italic;
+        }
+
+        .small {
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .social-links a i {
+            font-size: 1.5rem;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .hero-logo {
+            width: 300px;
+            height: auto;
+            margin-bottom: 2rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-icon {
+            width: 120px;
+            height: auto;
+            margin: 2rem 0;
+            filter: brightness(0) invert(1); /* Ak chcete, aby bol obrázok biely */
+            opacity: 0.9;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .accordion-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: none;
+            margin-bottom: 1rem;
+        }
+
+        .accordion-button {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.2rem;
+            padding: 1.5rem;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .accordion-button::after {
+            filter: brightness(0) invert(1);
+        }
+
+        .accordion-body {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+            padding: 2rem;
+        }
+
+        .menu-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .menu-item-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-item-price:last-child {
+            border-bottom: none;
+        }
+
+        .price {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .accordion-button:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .accordion-button:not(.collapsed):hover {
+            background-color: #b18d3d;
+        }
+
+        .tea-intro {
+            color: var(--accent-color);
+            font-style: italic;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1rem;
+        }
+
+        .menu-item-detailed {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item-detailed:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .menu-item-detailed h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .menu-item-detailed p {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .menu-item-detailed .price {
+            display: block;
+            text-align: right;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .gallery-section {
+            padding: 5rem 0;
+            background-color: var(--light-gray);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-overlay i {
+            color: white;
+            font-size: 2rem;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        @media (max-width: 1200px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .lb-data .lb-close {
+            opacity: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .lb-data .lb-close:hover {
+            transform: scale(1.1);
+        }
+
+        .lb-nav a.lb-prev,
+        .lb-nav a.lb-next {
+            opacity: 0.8;
+        }
+
+        .lb-nav a.lb-prev:hover,
+        .lb-nav a.lb-next:hover {
+            opacity: 1;
+        }
+
+        .lb-prev, .lb-next {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 50%;
+            width: 50px !important;
+            height: 50px !important;
+            background-size: 25px !important;
+            top: 50% !important;
+            transform: translateY(-50%);
+        }
+
+        .lb-prev {
+            left: 20px !important;
+        }
+
+        .lb-next {
+            right: 20px !important;
+        }
+
+        .lb-closeContainer {
+            position: absolute;
+            top: -40px;
+            right: 0;
+        }
+
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            width: 100%;
+        }
+
+        .map-container iframe {
+            display: block;
+            transition: opacity 0.3s;
+        }
+
+        .map-container:hover iframe {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .map-container iframe {
+                height: 300px;
+            }
+        }
+
+        .navbar-logo {
+            height: 70px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover .navbar-logo {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .navbar-logo {
+                height: 50px;
+            }
+            
+            .navbar-brand span {
+                font-size: 1.5rem;
+            }
+
+            header {
+                padding: 0 15px; /* Add padding to ensure content doesn't touch the edges */
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: center; /* Stack items vertically */
+            }
+        }
+
+        .games-section {
+            padding: 5rem 0;
+            background-color: var(--light-gray);
+        }
+
+        .games-intro {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .game-category-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .game-category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon-wrapper {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .icon-wrapper i {
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .game-category-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .game-category-card p {
+            color: var(--accent-color);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .game-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .game-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .game-list li:last-child {
+            border-bottom: none;
+        }
+
+        .game-list li i {
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+
+        .gallery-page {
+            display: none;
+        }
+
+        .gallery-page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .gallery-pagination {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 1rem;
+            padding: 0 15px;
+        }
+
+        .pagination-numbers {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .first-row,
+        .second-row {
+            display: flex;
+            gap: 0;
+        }
+
+        .page-number {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            .pagination-numbers {
+                flex-direction: column;
+            }
+        }
+
+        .pagination-arrow {
+            display: flex;
+            align-items: center;
+        }
+
+        .pagination-arrow,
+        .page-number {
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 10px 15px;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .pagination-arrow,
+            .page-number {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+        }
+
+        .pagination-arrow:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination-arrow:hover:not(:disabled),
+        .page-number:hover:not(.active) {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .page-number.active {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        h1, h2, h3 {
+            font-size: 1.5rem;
+        }
+
+        .lead {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Style for back-to-top button */
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            background-color: var(--accent-color);
+            color: white;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 0.5rem; /* Reduce padding for mobile */
+            }
+
+            h1 {
+                font-size: 1.8rem; /* Smaller heading size for mobile */
+            }
+
+            p {
+                font-size: 1rem; /* Smaller paragraph size for mobile */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 1rem; /* Reduce padding for mobile */
+            }
+        }
+
+        /* Add margin to the section containing the heading */
+        #about {
+            margin-top: 40px; /* Add space above the section */
+        }
+
+        h2 {
+            margin-top: 20px; /* Add space above the heading */
+        }
+
+        /* Adjust the image in the about section */
+        #about .col-lg-6 img {
+            margin-top: 20px; /* Add space above the image */
+        }
+
+        .navbar-black {
+            background-color: var(--primary-color) !important; /* Set to black or your desired color */
+        }
+
+        /* Center Fancybox captions for all devices */
+        .fancybox-caption {
+            text-align: center !important;
+            padding: 15px 20px !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            background: rgba(0, 0, 0, 0.8) !important; /* Optional: Add a background for better visibility */
+            flex-direction: column; /* Ensure items stack vertically */
+            width: 100%; /* Ensure full width */
+        }
+
+        .fancybox-caption__body {
+            font-size: 14px;
+            color: #fff;
+            max-width: 90%;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 768px) {
+            .fancybox-caption {
+                padding: 10px 15px !important;
+                height: auto !important;
+                bottom: 0 !important;
+                background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.6)) !important; /* Optional: Gradient background */
+                flex-direction: column; /* Ensure items stack vertically */
+                width: 100%; /* Ensure full width */
+            }
+            
+            .fancybox-caption__body {
+                font-size: 12px;
+                max-width: 100%;
+                padding: 5px 10px;
+            }
+
+            /* Fix positioning for mobile */
+            .fancybox-toolbar {
+                top: 10px !important;
+                right: 10px !important;
+            }
+            
+            .fancybox-button--zoom,
+            .fancybox-button--fullscreen {
+                display: none !important;
+            }
+        }
+
+        /* Ensure caption stays centered in all orientations */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .fancybox-caption {
+                position: relative !important;
+                bottom: auto !important;
+                background: rgba(0,0,0,0.7) !important;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="Pictures/logo.png" alt="Checkmate Logo" class="navbar-logo">
+                <span class="ms-3">CHECKMATE</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">O nás</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#games">Stolné hry</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Galéria</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>CHECKMATE<br>ŠACH & KÁVA</h1>
+            <p>Exkluzívna šachová kaviareň v srdci mesta</p>
+            <a href="#menu" class="btn btn-custom">Objavte naše menu</a>
+        </div>
+    </header>
+
+    <style>
+        /* Existing styles for the hero section */
+        .hero {
+            padding: 4rem 1rem; /* Maintain padding for larger screens */
+            text-align: center; /* Center text */
+        }
+
+        .hero-content {
+            max-width: 90%; /* Limit width for better fit */
+            margin: 0 auto; /* Center content */
+        }
+
+        h1 {
+            font-size: 2.5rem; /* Adjust heading size for better fit */
+            line-height: 1.2; /* Adjust line height */
+        }
+
+        p {
+            font-size: 1.2rem; /* Adjust paragraph size for better readability */
+            line-height: 1.5; /* Increase line height for readability */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 0.5rem; /* Reduce padding for mobile */
+            }
+
+            h1 {
+                font-size: 1.8rem; /* Smaller heading size for mobile */
+            }
+
+            p {
+                font-size: 1rem; /* Smaller paragraph size for mobile */
+            }
+        }
+    </style>
+
+    <section id="about" class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2>Jedinečná kaviareň</h2>
+                <p class="lead mb-4">Usaďte sa do pohodlného kresla a vychutnajte si atmosféru kaviarne v šachovom štýle pri šálke výnimočnej kávy Bazzara alebo čaju Althaus.</p>
+                <p class="mb-4">Našim cieľom je ponúknuť hosťom všetko tak, ako by sme to pripravili aj doma. V našej ponuke nájdete nápoje ako sú smoothies, domáce limonády, alebo ovocné šťavy, pričom všetko je vyrobené výhradne z čerstvých surovín na základe vlastných receptúr.</p>
+                <div class="features">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-coffee fa-2x me-3" style="color: var(--accent-color)"></i>
+                        <span>Pravé talianske espresso Bazzara</span>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-chess fa-2x me-3" style="color: var(--accent-color)"></i>
+                        <span>Desiatky stolných hier pre každého</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-calendar fa-2x me-3" style="color: var(--accent-color)"></i>
+                        <span>Priestor pre oslavy a firemné akcie</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="Pictures/inside.jpg" class="img-fluid rounded-3 shadow-lg" alt="Interiér kaviarne">
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <h2 class="text-center text-white">Naša ponuka</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="accordion" id="menuAccordion">
+                        <!-- Káva -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#coffee">
+                                    <i class="fas fa-coffee me-3"></i> Káva
+                                </button>
+                            </h2>
+                            <div id="coffee" class="accordion-collapse collapse show" data-bs-parent="#menuAccordion">
+                                <div class="accordion-body">
+                                    <div class="menu-grid">
+                                        <div class="menu-item-price">
+                                            <span>Espresso</span>
+                                            <span class="price">2.20 €</span>
+                                        </div>
+                                        <div class="menu-item-price">
+                                            <span>Cappuccino</span>
+                                            <span class="price">2.90 €</span>
+                                        </div>
+                                        <div class="menu-item-price">
+                                            <span>Caffé Latte</span>
+                                            <span class="price">3.20 €</span>
+                                        </div>
+                                        <div class="menu-item-price">
+                                            <span>Flat White</span>
+                                            <span class="price">3.40 €</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Čaje -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tea">
+                                    <i class="fas fa-mug-hot me-3"></i> Prémiové čaje
+                                </button>
+                            </h2>
+                            <div id="tea" class="accordion-collapse collapse" data-bs-parent="#menuAccordion">
+                                <div class="accordion-body">
+                                    <p class="tea-intro mb-4">Čaje značky Teapicker sú starostlivo ručne zbierané v nadmorskej výške 1000 metrov nad morom v provincii Fujian. Ručný zber umožňuje výber tých najlepších lístkov v každej šálke.</p>
+                                    
+                                    <div class="menu-grid">
+                                        <div class="menu-item-detailed">
+                                            <h4>Black Dragon Pearl Tea</h4>
+                                            <p>Jemná chuť čierneho čaju bez trpkosti, využívajúca len najjemnejšie dva listy a nerozvinutý lístok čajovníka</p>
+                                            <span class="price">3.90 €</span>
+                                        </div>
+
+                                        <div class="menu-item-detailed">
+                                            <h4>Golden Snake Black Tea</h4>
+                                            <p>Nasladlý čierny sypaný čaj, výrazná alternatíva vhodná pre milovníkov darjeeling čajov</p>
+                                            <span class="price">3.90 €</span>
+                                        </div>
+
+                                        <div class="menu-item-detailed">
+                                            <h4>Lychee Black Dragon Pearl Tea</h4>
+                                            <p>Celolistový čaj s plodmi liči, rolovaný do guličiek s arómou ružového oleja</p>
+                                            <span class="price">4.20 €</span>
+                                        </div>
+
+                                        <div class="menu-item-detailed">
+                                            <h4>Green Dragon Pearl Tea</h4>
+                                            <p>Zelený čaj s okrúhlou chuťou a dochuťou sušienok, ručne rolovaný do guličiek</p>
+                                            <span class="price">3.90 €</span>
+                                        </div>
+
+                                        <div class="menu-item-detailed">
+                                            <h4>Green Tea Yellow Bug</h4>
+                                            <p>Jemný zelený čaj s medovitou vôňou, obsahujúci nerozvinutý lístok a prvý list čajovníka</p>
+                                            <span class="price">3.90 €</span>
+                                        </div>
+
+                                        <div class="menu-item-detailed">
+                                            <h4>Jasmine Green Snail Tea</h4>
+                                            <p>Výrazný čaj prekladaný čerstvými kvetmi jazmínu s povznášajúcou arómou</p>
+                                            <span class="price">4.20 €</span>
+                                        </div>
+
+                                        <div class="menu-item-detailed">
+                                            <h4>Jasmine White Monkey Tea</h4>
+                                            <p>Špecialita z pohoria Taimu s intenzívnou kvetinovou arómou a striebornými odleskami</p>
+                                            <span class="price">4.20 €</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Smoothies -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#smoothies">
+                                    <i class="fas fa-blender me-3"></i> Smoothies
+                                </button>
+                            </h2>
+                            <div id="smoothies" class="accordion-collapse collapse" data-bs-parent="#menuAccordion">
+                                <div class="accordion-body">
+                                    <div class="menu-grid">
+                                        <div class="menu-item-price">
+                                            <span>Berry Mix</span>
+                                            <span class="price">4.50 €</span>
+                                        </div>
+                                        <div class="menu-item-price">
+                                            <span>Tropical Dream</span>
+                                            <span class="price">4.50 €</span>
+                                        </div>
+                                        <div class="menu-item-price">
+                                            <span>Green Power</span>
+                                            <span class="price">4.50 €</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dezerty -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#desserts">
+                                    <i class="fas fa-cake-candles me-3"></i> Dezerty
+                                </button>
+                            </h2>
+                            <div id="desserts" class="accordion-collapse collapse" data-bs-parent="#menuAccordion">
+                                <div class="accordion-body">
+                                    <div class="menu-grid">
+                                        <div class="menu-item-price">
+                                            <span>Domáca bábovka</span>
+                                            <span class="price">3.50 €</span>
+                                        </div>
+                                        <div class="menu-item-price">
+                                            <span>Cheesecake</span>
+                                            <span class="price">4.20 €</span>
+                                        </div>
+                                        <div class="menu-item-price">
+                                            <span>Tiramisu</span>
+                                            <span class="price">4.50 €</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="games" class="games-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Stolné hry</h2>
+            <div class="games-intro text-center mb-5">
+                <p class="lead">Stolné hry sú skvelé v tom, že pri nich nepotrebujete mobil, notebook, internet, nemusíte byť na facebooku, dokonca by vam nechýbala ani elektrina. Jediné čo potrebujete je spoluhráč, ideálne niekoľko spoluhráčov a zábava môže začať.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Pre dvojicu -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="game-category-card">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <h3>Hry pre dvojice</h3>
+                        <p>Dvaja, aké krásne je byť dvaja</p>
+                        <ul class="game-list">
+                            <li><i class="fas fa-chess"></i> Šach</li>
+                            <li><i class="fas fa-chess-board"></i> Dáma</li>
+                            <li><i class="fas fa-dice"></i> Backgammon</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Skupinové hry -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="game-category-card">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Skupinové hry</h3>
+                        <p>Čím viac, tým lepšie!</p>
+                        <ul class="game-list">
+                            <li><i class="fas fa-dice-six"></i> Spoločenské hry</li>
+                            <li><i class="fas fa-puzzle-piece"></i> Párty hry</li>
+                            <li><i class="fas fa-brain"></i> Strategické hry</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Single hry -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="game-category-card">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3>Single hry</h3>
+                        <p>Pre individuálnych hráčov</p>
+                        <ul class="game-list">
+                            <li><i class="fas fa-puzzle-piece"></i> Hlavolamy</li>
+                            <li><i class="fas fa-cube"></i> Logické hry</li>
+                            <li><i class="fas fa-brain"></i> IQ hry</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pre deti -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="game-category-card">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h3>Pre deti</h3>
+                        <p>Zábavné aj logické</p>
+                        <ul class="game-list">
+                            <li><i class="fas fa-shapes"></i> Detské hry</li>
+                            <li><i class="fas fa-gamepad"></i> Zábavné hry</li>
+                            <li><i class="fas fa-graduation-cap"></i> Vzdelávacie hry</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Galéria</h2>
+
+            <!-- Stránka 1 -->
+            <div class="gallery-page active" data-page="1">
+                <div class="gallery-grid">
+                    <a href="Pictures/gallery-1.jpg" data-fancybox="gallery" data-caption="Interiér kaviarne" class="gallery-item">
+                        <img src="Pictures/gallery-1.jpg" alt="Interiér kaviarne" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-2.jpg" data-fancybox="gallery" data-caption="Šachové turnaje" class="gallery-item">
+                        <img src="Pictures/gallery-2.jpg" alt="Šachové turnaje" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-3.jpg" data-fancybox="gallery" data-caption="Naša káva" class="gallery-item">
+                        <img src="Pictures/gallery-3.jpg" alt="Naša káva" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-4.jpg" data-fancybox="gallery" data-caption="Dezerty" class="gallery-item">
+                        <img src="Pictures/gallery-4.jpg" alt="Dezerty" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-5.jpg" data-fancybox="gallery" data-caption="Šachové sety" class="gallery-item">
+                        <img src="Pictures/gallery-5.jpg" alt="Šachové sety" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-6.jpg" data-fancybox="gallery" data-caption="Atmosféra" class="gallery-item">
+                        <img src="Pictures/gallery-6.jpg" alt="Atmosféra" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-7.jpg" data-fancybox="gallery" data-caption="Stolné hry" class="gallery-item">
+                        <img src="Pictures/gallery-7.jpg" alt="Stolné hry" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-8.jpg" data-fancybox="gallery" data-caption="Posedenie" class="gallery-item">
+                        <img src="Pictures/gallery-8.jpg" alt="Posedenie" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Stránka 2 -->
+            <div class="gallery-page" data-page="2">
+                <div class="gallery-grid">
+                    <a href="Pictures/gallery-9.jpg" data-fancybox="gallery" data-caption="Foto 9" class="gallery-item">
+                        <img src="Pictures/gallery-9.jpg" alt="Foto 9" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-10.jpg" data-fancybox="gallery" data-caption="Foto 10" class="gallery-item">
+                        <img src="Pictures/gallery-10.jpg" alt="Foto 10" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-11.jpg" data-fancybox="gallery" data-caption="Foto 11" class="gallery-item">
+                        <img src="Pictures/gallery-11.jpg" alt="Foto 11" loading="lazy" class="img-fluid">
+                        <div class="page-number">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-12.jpg" data-fancybox="gallery" data-caption="Foto 12" class="gallery-item">
+                        <img src="Pictures/gallery-12.jpg" alt="Foto 12" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-13.jpg" data-fancybox="gallery" data-caption="Foto 13" class="gallery-item">
+                        <img src="Pictures/gallery-13.jpg" alt="Foto 13" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-14.jpg" data-fancybox="gallery" data-caption="Foto 14" class="gallery-item">
+                        <img src="Pictures/gallery-14.jpg" alt="Foto 14" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-15.jpg" data-fancybox="gallery" data-caption="Foto 15" class="gallery-item">
+                        <img src="Pictures/gallery-15.jpg" alt="Foto 15" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-16.jpg" data-fancybox="gallery" data-caption="Foto 16" class="gallery-item">
+                        <img src="Pictures/gallery-16.jpg" alt="Foto 16" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Stránka 3 -->
+            <div class="gallery-page" data-page="3">
+                <div class="gallery-grid">
+                    <a href="Pictures/gallery-17.jpg" data-fancybox="gallery" data-caption="Foto 17" class="gallery-item">
+                        <img src="Pictures/gallery-17.jpg" alt="Foto 17" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-18.jpg" data-fancybox="gallery" data-caption="Foto 18" class="gallery-item">
+                        <img src="Pictures/gallery-18.jpg" alt="Foto 18" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-19.jpg" data-fancybox="gallery" data-caption="Foto 19" class="gallery-item">
+                        <img src="Pictures/gallery-19.jpg" alt="Foto 19" loading="lazy" class="img-fluid">
+                        <div class="page-number">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-20.jpg" data-fancybox="gallery" data-caption="Foto 20" class="gallery-item">
+                        <img src="Pictures/gallery-20.jpg" alt="Foto 20" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-21.jpg" data-fancybox="gallery" data-caption="Foto 21" class="gallery-item">
+                        <img src="Pictures/gallery-21.jpg" alt="Foto 21" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-22.jpg" data-fancybox="gallery" data-caption="Foto 22" class="gallery-item">
+                        <img src="Pictures/gallery-22.jpg" alt="Foto 22" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-23.jpg" data-fancybox="gallery" data-caption="Foto 23" class="gallery-item">
+                        <img src="Pictures/gallery-23.jpg" alt="Foto 23" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-24.jpg" data-fancybox="gallery" data-caption="Foto 24" class="gallery-item">
+                        <img src="Pictures/gallery-24.jpg" alt="Foto 24" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+             <!-- Stránka 4 -->
+             <div class="gallery-page" data-page="4">
+                <div class="gallery-grid">
+                    <a href="Pictures/gallery-25.jpg" data-fancybox="gallery" data-caption="Foto 25" class="gallery-item">
+                        <img src="Pictures/gallery-25.jpg" alt="Foto 25" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-26.jpg" data-fancybox="gallery" data-caption="Foto 26" class="gallery-item">
+                        <img src="Pictures/gallery-26.jpg" alt="Foto 26" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-27.jpg" data-fancybox="gallery" data-caption="Foto 27" class="gallery-item">
+                        <img src="Pictures/gallery-27.jpg" alt="Foto 27" loading="lazy" class="img-fluid">
+                        <div class="page-number">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-28.jpg" data-fancybox="gallery" data-caption="Foto 28" class="gallery-item">
+                        <img src="Pictures/gallery-28.jpg" alt="Foto 28" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-29.jpg" data-fancybox="gallery" data-caption="Foto 29" class="gallery-item">
+                        <img src="Pictures/gallery-29.jpg" alt="Foto 29" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-30.jpg" data-fancybox="gallery" data-caption="Foto 30" class="gallery-item">
+                        <img src="Pictures/gallery-30.jpg" alt="Foto 30" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-31.jpg" data-fancybox="gallery" data-caption="Foto 31" class="gallery-item">
+                        <img src="Pictures/gallery-31.jpg" alt="Foto 31" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-32.jpg" data-fancybox="gallery" data-caption="Foto 32" class="gallery-item">
+                        <img src="Pictures/gallery-32.jpg" alt="Foto 32" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Stránka 5 -->
+            <div class="gallery-page" data-page="5">
+                <div class="gallery-grid">
+                    <a href="Pictures/gallery-33.jpg" data-fancybox="gallery" data-caption="Foto 33" class="gallery-item">
+                        <img src="Pictures/gallery-33.jpg" alt="Foto 33" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-34.jpg" data-fancybox="gallery" data-caption="Foto 34" class="gallery-item">
+                        <img src="Pictures/gallery-34.jpg" alt="Foto 34" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-35.jpg" data-fancybox="gallery" data-caption="Foto 35" class="gallery-item">
+                        <img src="Pictures/gallery-35.jpg" alt="Foto 35" loading="lazy" class="img-fluid">
+                        <div class="page-number">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-36.jpg" data-fancybox="gallery" data-caption="Foto 36" class="gallery-item">
+                        <img src="Pictures/gallery-36.jpg" alt="Foto 36" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-37.jpg" data-fancybox="gallery" data-caption="Foto 37" class="gallery-item">
+                        <img src="Pictures/gallery-37.jpg" alt="Foto 37" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-38.jpg" data-fancybox="gallery" data-caption="Foto 38" class="gallery-item">
+                        <img src="Pictures/gallery-38.jpg" alt="Foto 38" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-39.jpg" data-fancybox="gallery" data-caption="Foto 39" class="gallery-item">
+                        <img src="Pictures/gallery-39.jpg" alt="Foto 39" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-40.jpg" data-fancybox="gallery" data-caption="Foto 40" class="gallery-item">
+                        <img src="Pictures/gallery-40.jpg" alt="Foto 40" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+              <!-- Stránka 6 -->
+              <div class="gallery-page" data-page="6">
+                <div class="gallery-grid">
+                    <a href="Pictures/gallery-41.jpg" data-fancybox="gallery" data-caption="Foto 41" class="gallery-item">
+                        <img src="Pictures/gallery-41.jpg" alt="Foto 41" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-42.jpg" data-fancybox="gallery" data-caption="Foto 42" class="gallery-item">
+                        <img src="Pictures/gallery-42.jpg" alt="Foto 42" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-43.jpg" data-fancybox="gallery" data-caption="Foto 43" class="gallery-item">
+                        <img src="Pictures/gallery-43.jpg" alt="Foto 43" loading="lazy" class="img-fluid">
+                        <div class="page-number">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-44.jpg" data-fancybox="gallery" data-caption="Foto 44" class="gallery-item">
+                        <img src="Pictures/gallery-44.jpg" alt="Foto 44" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-45.jpg" data-fancybox="gallery" data-caption="Foto 45" class="gallery-item">
+                        <img src="Pictures/gallery-45.jpg" alt="Foto 45" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-46.jpg" data-fancybox="gallery" data-caption="Foto 46" class="gallery-item">
+                        <img src="Pictures/gallery-46.jpg" alt="Foto 46" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                    <a href="Pictures/gallery-47.jpg" data-fancybox="gallery" data-caption="Foto 47" class="gallery-item">
+                        <img src="Pictures/gallery-47.jpg" alt="Foto 47" loading="lazy" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Paginácia -->
+            <div class="gallery-pagination">
+                <button class="pagination-arrow prev" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="pagination-numbers">
+                    <div class="first-row">
+                        <button class="page-number active" data-page="1">1</button>
+                        <button class="page-number" data-page="2">2</button>
+                        <button class="page-number" data-page="3">3</button>
+                    </div>
+                    <div class="second-row">
+                        <button class="page-number" data-page="4">4</button>
+                        <button class="page-number" data-page="5">5</button>
+                        <button class="page-number" data-page="6">6</button>
+                    </div>
+                </div>
+                <button class="pagination-arrow next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Kontakt</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-5">
+                    <div class="contact-info-card">
+                        <h3>CHECK#MATE!</h3>
+                        <h4>Šachová kaviareň</h4>
+                        <div class="company-info">
+                            <p>ETERNITTA GAMI s.r.o.<br>
+                            Check#Mate šachová kaviareň<br>
+                            Mierová 94<br>
+                            066 01 Humenné</p>
+                            
+                            <p class="small text-muted">Zapísaný v Obchodnom registri, OS Prešov,<br>
+                            oddiel Sro, vložka číslo: 30356/P<br>
+                            IČO: 54388376</p>
+                            
+                            <p><strong>Vedúca prevádzky:</strong> Daniela Gajovská<br>
+                            <strong>Tel.:</strong> 0919 203 634<br>
+                            <strong>Rezervácie:</strong> 0940 601 824</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-5">
+                    <div class="hours-card">
+                        <h3>Otváracie hodiny</h3>
+                        <div class="opening-hours">
+                            <div class="hour-item">
+                                <span>Pondelok:</span>
+                                <span>7:30 - 21:00</span>
+                            </div>
+                            <div class="hour-item">
+                                <span>Utorok:</span>
+                                <span>7:30 - 21:00</span>
+                            </div>
+                            <div class="hour-item">
+                                <span>Streda:</span>
+                                <span>7:30 - 21:00</span>
+                            </div>
+                            <div class="hour-item">
+                                <span>Štvrtok:</span>
+                                <span>7:30 - 21:00</span>
+                            </div>
+                            <div class="hour-item">
+                                <span>Piatok:</span>
+                                <span>7:30 - 00:00</span>
+                            </div>
+                            <div class="hour-item">
+                                <span>Sobota:</span>
+                                <span>15:00 - 00:00</span>
+                            </div>
+                            <div class="hour-item">
+                                <span>Nedeľa:</span>
+                                <span>15:00 - 22:00</span>
+                            </div>
+                        </div>
+                        <p class="hours-note mt-3">V čase konania kultúrnych podujatí sú otváracie hodiny predĺžené podľa programu.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pridaná mapa -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2621.103670422427!2d21.883889476150255!3d48.93246719549095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473eb5a5e107a263%3A0x672c1f0c43ec2059!2zTWllcm92w6EgMjYwMi85NCwgMDY2IDAxIEh1bWVubsOp!5e0!3m2!1ssk!2ssk!4v1740238518811!5m2!1ssk!2ssk" 
+                            width="100%" 
+                            height="450" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CHECKMATE | Šach & Káva</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/kaviarencheckmate/" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/kaviarencheckmate/" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Back to Top button functionality
+            const button = document.getElementById('backToTop');
+            window.onscroll = function() {
+                if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                    button.style.display = "block";
+                } else {
+                    button.style.display = "none";
+                }
+            };
+
+            button.onclick = function() {
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            };
+
+            // Prevent automatic opening of the first image
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryItems.forEach(item => {
+                item.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default action
+                    const caption = this.dataset.caption; // Just the caption without the play button
+                    Fancybox.show([{ 
+                        src: this.href, 
+                        caption: caption 
+                    }]); // Open Fancybox
+                });
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').classList.add('scrolled');
+            } else {
+                document.querySelector('.navbar').classList.remove('scrolled');
+            }
+        });
+
+        // Change navbar background on toggle
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbar = document.querySelector('.navbar');
+
+        navbarToggler.addEventListener('click', function() {
+            navbar.classList.toggle('navbar-black'); // Toggle the black background class
+        });
+
+        // Close the navbar when a link is clicked
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                const collapseElement = document.getElementById('navbarNav');
+                const bsCollapse = new bootstrap.Collapse(collapseElement, {
+                    toggle: false // Prevent automatic toggling
+                });
+                bsCollapse.hide(); // Manually hide the navbar
+
+                // Prevent default action for the gallery link
+                if (this.getAttribute('href') === '#gallery') {
+                    event.preventDefault(); // Prevent default anchor click behavior
+                    document.querySelector('#gallery').scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to gallery
+                }
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        Fancybox.bind("[data-fancybox]", {
+            // Custom settings
+            Images: {
+                zoom: true,
+            },
+            // Slovenské preklady
+            l10n: {
+                CLOSE: "Zavrieť",
+                NEXT: "Ďalší",
+                PREV: "Predchádzajúci",
+                MODAL: "Túto položku môžete zavrieť pomocou klávesy ESC",
+                ERROR: "Niečo sa pokazilo, skúste to prosím neskôr",
+                IMAGE_ERROR: "Obrázok sa nenašiel",
+                ELEMENT_NOT_FOUND: "HTML element sa nenašiel",
+                TOGGLE_SLIDESHOW: "Spustiť/zastaviť slideshow",
+                TOGGLE_FULLSCREEN: "Prepnúť režim celej obrazovky",
+                TOGGLE_THUMBS: "Prepnúť miniatúry",
+                TOGGLE_ZOOM: "Prepnúť zoom",
+                ITERATE_PREV: "Predchádzajúca položka",
+                ITERATE_NEXT: "Ďalšia položka"
+            },
+            // Custom close button functionality
+            on: {
+                close: () => {
+                    console.log("Fancybox closed");
+                    // Additional actions can be added here if needed
+                }
+            }
+        });
+    </script>
+    <script>
+        // Pridajte tento script
+        document.addEventListener('DOMContentLoaded', function() {
+            const pages = document.querySelectorAll('.gallery-page');
+            const pageButtons = document.querySelectorAll('.page-number');
+            const prevButton = document.querySelector('.pagination-arrow.prev');
+            const nextButton = document.querySelector('.pagination-arrow.next');
+            let currentPage = 1;
+            const totalPages = pages.length;
+
+            function showPage(pageNumber) {
+                pages.forEach(page => page.classList.remove('active'));
+                pageButtons.forEach(button => button.classList.remove('active'));
+                
+                document.querySelector(`[data-page="${pageNumber}"]`).classList.add('active');
+                document.querySelector(`.page-number[data-page="${pageNumber}"]`).classList.add('active');
+                
+                currentPage = pageNumber;
+                
+                // Aktualizácia šípok
+                prevButton.disabled = currentPage === 1;
+                nextButton.disabled = currentPage === totalPages;
+            }
+
+            // Event listeners pre čísla stránok
+            pageButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    showPage(parseInt(button.dataset.page));
+                });
+            });
+
+            // Event listeners pre šípky
+            prevButton.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    showPage(currentPage - 1);
+                }
+            });
+
+            nextButton.addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    showPage(currentPage + 1);
+                }
+            });
+
+            // Inicializácia
+            showPage(1);
+        });
+    </script>
+</body>
+</html>
